@@ -1,24 +1,19 @@
-
-let remainingCounter = 1000;
-
-class VideoStreamer {
-    validator = (req, res, next) => {
+class MyBank {
+    login = (req, res, next) => {
         next()
     }
 
-    video = () => {
-        return 'your controlled video stream'
+    getAccount = () => {
+        next()
     }
 
-    getVideo = (req, res) => {
-        let video = this.video()
-        remainingCounter = remainingCounter - 1;
-        res.status(200).send({
-            message : `Remaining count for video is ${remainingCounter}`,
-            video
-        })
+    updateAccount = (req, res) => {
+        next()
+    }
 
+    approveAccount = (req, res) => {
+        next()
     }
 
 }
-export default new VideoStreamer();
+export default new MyBank();
