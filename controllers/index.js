@@ -3,7 +3,7 @@ class MyBank {
         next()
     }
 
-    getAccount = () => {
+    getAccount = (req, res) => {
         next()
     }
 
