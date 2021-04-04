@@ -1,3 +1,4 @@
+
 import { Block, BlockChain } from '../lib/blockChain.js'; 
 const GlobalChain = new BlockChain();
 class FlippingCoin {
@@ -13,16 +14,36 @@ class FlippingCoin {
                 req.body.genesis.transaction){
                     next()
                 } else {
-                    res.status(400).send({ message: 'Request format is not correct!'})
+                    res
+                    .status(400)
+                    .send({
+                        message: 'Request format is not correct!'
+                    })
                 }
         } else {
-            res.status(400).send({ message: '1Request format is not correct!'})
+            res
+            .status(400)
+            .send({
+                message: 'Request format is not correct!'
+            })
         }
     }
+
+
     createNewChain = (req, res)  => {
-        const chain = GlobalChain.create(req.body.id, req.body.name, req.body.genesis)
-        res.status(200).send({ message: 'Chain created', data: GlobalChain})
+        const chain = GlobalChain.create(
+            req.body.id, 
+            req.body.name, 
+            req.body.genesis
+        )
+        res
+        .status(200)
+        .send({
+            message: 'Chain created', data: GlobalChain
+        })
     }
+
+
     appendNewChild = (req, res) => {
         const block = new Block(
             this.chain.length,
@@ -32,6 +53,8 @@ class FlippingCoin {
         GlobalChain.addNewBlock(block);
         res.status(200).send({message: 'block added!'})
     }
+
+    
     getChain = (req, res) => {
         res.status(200).send({ chain: GlobalChain })
     }
