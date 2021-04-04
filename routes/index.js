@@ -1,18 +1,12 @@
 import { Router } from 'express';
-import Controller from './../controllers/index.js';
+import Controller from '../controllers/flippingCoins.js';
 var router = Router();
 
-// To make user login.
-router.get('/login', Controller.login)
+router.post('/blockchain', Controller.validateNewChain, Controller.createNewChain)
 
-// to get the account details
-router.get('/account', Controller.getAccount)
+router.get('/blockchain/', Controller.getChain)
 
-// to approve the account
-router.put('/approve', Controller.approveAccount)
-
-// to update the account
-router.put('/account', Controller.updateAccount)
+router.post('/blockchain/append', Controller.appendNewChild)
 
 export default router;
 

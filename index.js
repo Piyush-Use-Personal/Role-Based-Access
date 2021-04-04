@@ -1,9 +1,11 @@
 import express from 'express';
-
+import bodyParser from 'body-parser';
 import apiRouter from "./routes/index.js";
 const app = express();
-const PORT = 8080;
 
+const PORT = 8080;
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
 app.use('/api', apiRouter)
 // create a route for the app
 app.get('/', (req, res) => {
